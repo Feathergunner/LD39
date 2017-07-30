@@ -243,4 +243,17 @@ public class UIController : MonoBehaviour {
 		return (int)panel_main.transform.Find ("Slider_DIFFICULT").gameObject.GetComponent<Slider>().value;
 	}
 	
+	public void mute_sound()
+	{
+		GameObject go_audio_source = Camera.main.transform.Find ("Audio Source").gameObject;
+		if (go_audio_source.activeSelf)
+		{
+			go_audio_source.SetActive(false);
+		}
+		else
+		{
+			go_audio_source.SetActive(true);
+		}
+	}
+	
 }
