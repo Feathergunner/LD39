@@ -48,6 +48,7 @@
      <Compile Include="Assets\Controller\CameraController.cs" />
      <Compile Include="Assets\Controller\MouseController.cs" />
      <Compile Include="Assets\Controller\TileController.cs" />
+     <Compile Include="Assets\Controller\TutorialController.cs" />
      <Compile Include="Assets\Controller\UIController.cs" />
      <Compile Include="Assets\Controller\WorldController.cs" />
      <Compile Include="Assets\Models\Player.cs" />

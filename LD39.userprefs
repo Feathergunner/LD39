@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Controller\WorldController.cs">
     <Files>
-      <File FileName="Assets\Controller\UIController.cs" Line="74" Column="81" />
-      <File FileName="Assets\Controller\WorldController.cs" Line="46" Column="54" />
+      <File FileName="Assets\Controller\UIController.cs" Line="44" Column="3" />
+      <File FileName="Assets\Controller\WorldController.cs" Line="144" Column="23" />
       <File FileName="Assets\Models\Player.cs" Line="44" Column="11" />
       <File FileName="Assets\Models\World.cs" Line="25" Column="33" />
       <File FileName="Assets\Models\Tile.cs" Line="20" Column="14" />

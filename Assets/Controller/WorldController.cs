@@ -25,16 +25,16 @@ public class WorldController : MonoBehaviour {
 	GameObject [,] tile_go;
 	
 	int turn;
+	int difficulty;
 
 	// Use this for initialization
 	void Start () {
-		world = new World(world_size, world_size, 4, 8);
 		//player = new Player(10,10);
-		
 		turn = 0;
+		difficulty = 1;
 		
-		// Create a Gameobject for each tile
 		tile_go = new GameObject[world_size, world_size];
+		// Create a Gameobject for each tile
 		for (int i_x=0; i_x<world_size; i_x++)
 		{
 			for (int i_y=0; i_y<world_size; i_y++)
@@ -47,8 +47,6 @@ public class WorldController : MonoBehaviour {
 			}
 		}
 		
-		//GameObject player_go = (GameObject)Instantiate(player_prefab, player_position, player_prefab.transform.rotation);
-		
 		player_go = new GameObject();
 		player_go.name = "PLAYER";
 		SpriteRenderer player_sr = player_go.AddComponent<SpriteRenderer>();
@@ -58,6 +56,11 @@ public class WorldController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+	
+	void create_world()
+	{
+		world = new World(world_size, world_size, 6-difficulty, 8);
 	}
 	
 	public void set_light(){
@@ -131,16 +134,32 @@ public class WorldController : MonoBehaviour {
 	
 	public void start_game()
 	{
+		turn = 0;
+		create_world();
+		
 		uic.close_menu_panel();
+		
 		Vector3 player_position = new Vector3(world_size/2, world_size/2, -1);
 		player_go.transform.position = player_position;
-		player = new Player((int)player_position.x, (int)player_position.y, world);
+		player = new Player((int)player_position.x, (int)player_position.y, world, difficulty);
 		uic.update_player_bars(player.get_energy(), player.get_data(), player.get_points(), player.get_max_energy(), player.get_max_data());
+		uic.update_text_energy_light(player.get_light_costs());
+		uic.update_text_energy_walking(player.get_walking_costs());
 		render_world_tiles();
+		
+		Vector3 cam_position = new Vector3(world_size/2, world_size/2, -10);
+		Camera.main.transform.position = cam_position;
+		Camera.main.orthographicSize = 7;
 	}
 	
 	public void button_quit_game()
 	{
 		Application.Quit ();
+	}
+	
+	public void set_difficulty()
+	{
+		difficulty = uic.get_difficulty();
+		uic.update_text_difficulty(difficulty);
 	}
 }

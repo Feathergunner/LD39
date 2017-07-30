@@ -24,10 +24,11 @@ public class Player{
 	
 	int view_distance;
 	int view_level;
+	int difficulty;
 	
 	bool submit;
 	
-	public Player(int pos_x, int pos_y, World w)
+	public Player(int pos_x, int pos_y, World w, int diff)
 	{
 		this.pos_x = pos_x;
 		this.pos_y = pos_y;
@@ -43,6 +44,7 @@ public class Player{
 		energy = 1000;
 		data = 0;
 		points = 0;
+		difficulty = diff;
 	}
 	
 	public int get_view_distance(){
@@ -94,12 +96,12 @@ public class Player{
 	
 	public int get_light_costs()
 	{
-		return view_distance*view_distance*view_level*2;
+		return (difficulty-1)*5+view_distance*view_distance*view_level*2;
 	}
 	
 	public int get_submit_costs()
 	{
-		return 50+2*data;
+		return 40+(10*difficulty)+(1+difficulty)*data;
 	}
 	
 	void apply_light_costs()

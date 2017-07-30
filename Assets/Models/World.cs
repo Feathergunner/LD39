@@ -29,10 +29,6 @@ public class World{
 				tiles[i_x, i_y] =  new Tile(type);
 			}
 		}
-		
-		Vector3 cam_position = new Vector3(size_x/2, size_y/2, -10);
-		Camera.main.transform.Translate(cam_position);
-		Camera.main.orthographicSize = 7;
 	}
 	
 	public int get_tile_type_at(int x, int y)

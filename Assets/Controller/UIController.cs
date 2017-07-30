@@ -124,8 +124,8 @@ public class UIController : MonoBehaviour {
 		INITIALIZE MAIN PANEL
 		*/
 		
-		panel_main_width = Screen.width - 10;
-		panel_main_height = Screen.height - 10;
+		panel_main_width = Screen.width;
+		panel_main_height = Screen.height;
 		
 		panel_main.GetComponent<RectTransform>().sizeDelta = new Vector2(panel_main_width, panel_main_height);
 		go_panel_gameover = panel_main.transform.Find("Panel_GAMEOVER").gameObject;
@@ -231,6 +231,16 @@ public class UIController : MonoBehaviour {
 	public void update_text_points(int points)
 	{
 		go_text_points.GetComponent<Text>().text = "POINTS: "+points;
+	}
+	
+	public void update_text_difficulty(int diff)
+	{
+		panel_main.transform.Find ("Text_DIFFICULT").gameObject.GetComponent<Text>().text = "DIFFICULTY: "+diff;
+	}
+	
+	public int get_difficulty()
+	{
+		return (int)panel_main.transform.Find ("Slider_DIFFICULT").gameObject.GetComponent<Slider>().value;
 	}
 	
 }
